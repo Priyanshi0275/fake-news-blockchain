@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Fake News Blockchain Network</title>
+<link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">Fake News Detection Blockchain</h1>
+
+<!-- News Broadcast Panel -->
+
+<div class="card">
+
+<h2>Broadcast News</h2>
+
+<form action="/submit" method="post">
+
+<textarea name="news" placeholder="Enter news article to verify..."></textarea>
+
+<br>
+
+<button type="submit">Broadcast to Network</button>
+
+</form>
+
+</div>
+
+<!-- Network Visualization -->
+
+<div class="network">
+
+<h2>Blockchain Network</h2>
+
+<div class="nodes">
+
+<div class="node"></div>
+<div class="node"></div>
+<div class="node"></div>
+<div class="node"></div>
+<div class="node"></div>
+
+</div>
+
+</div>
+
+<!-- AI Result -->
+
+{% if score %}
+
+<div class="result-card">
+
+<h2>AI Detection Engine</h2>
+
+<div class="gauge-container">
+    <canvas id="probabilityGauge"></canvas>
+</div>
+
+<p class="validator">Validator Node: {{validator}}</p>
+
+<h3>Auditor Votes</h3>
+
+<ul>
+
+{% for a,v in votes.items() %}
+<li>{{a}} → {{v}}</li>
+{% endfor %}
+
+</ul>
+
+<h2 class="decision">Final Decision: {{decision}}</h2>
+
+</div>
+
+<script>
+
+const score = Number("{{score}}");
+
+const ctx = document.getElementById('probabilityGauge');
+
+new Chart(ctx, {
+
+type: 'doughnut',
+
+data: {
+
+labels: ['Fake Probability','Remaining'],
+
+datasets: [{
+
+data: [score*100, 100-score*100],
+
+backgroundColor: ['#ff4d6d','#1e293b'],
+
+borderWidth:0
+
+}]
+
+},
+
+options: {
+
+responsive: true,
+maintainAspectRatio: false,
+
+cutout:'75%',
+
+plugins: {
+legend:{display:false}
+}
+
+}
+
+});
+
+</script>
+
+{% endif %}
+
+<!-- Blockchain Ledger -->
+
+<div class="blockchain">
+
+<h2>Blockchain Timeline</h2>
+
+<div class="timeline">
+
+{% for block in chain %}
+
+<div class="block">
+
+<h3>Block {{block.index}}</h3>
+
+<p><strong>Validator:</strong> {{block.validator}}</p>
+
+<p><strong>ML Score:</strong> {{block.ml_score}}</p>
+
+<p class="hash">{{block.hash}}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<!-- Reputation -->
+
+<div class="reputation">
+
+<h2>Auditor Reputation</h2>
+
+<ul>
+
+{% for a,r in reputation.items() %}
+<li>{{a}} → {{r}}</li>
+{% endfor %}
+
+</ul>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
