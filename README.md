@@ -2,8 +2,7 @@
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-NLP-green)
 ![Blockchain](https://img.shields.io/badge/Blockchain-System-purple)
-Dataset used: Kaggle Fake and Real News Dataset
-https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+
 # Fake News Detection using Blockchain and Machine Learning
 
 This project presents a blockchain-based framework for detecting and verifying fake news using a machine learning model and decentralized validation mechanisms. The system integrates Natural Language Processing (NLP) techniques with a blockchain-inspired architecture to improve transparency, trust, and accountability in news verification.
@@ -118,6 +117,21 @@ http://127.0.0.1:5000
 ## Dataset
 
 The machine learning model is trained using a dataset containing fake and real news articles. The dataset includes labeled examples used to train and evaluate the NLP classifier.
+Dataset used: Kaggle Fake and Real News Dataset
+https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+## Application Interface
+
+### Dashboard
+
+![Dashboard](screenshots/image.png)
+
+### AI Probability Detection
+
+![Gauge](screenshots/fakescore.png)
+
+### Blockchain Timeline
+
+![Blockchain](screenshots/blockchaintimeline.png)
 
 ## Author
 
